@@ -1,200 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <title>GRADO DE ELECTRIFICACION</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Grado de electrificacion</title>
 </head>
 
 <body>
-    <div class="container">
-        <!-- NAVEGACION AND TITTLE -->
-        <nav class="navbar navbar-dark bg bg-secondary mb-2">
-            <a class="navbar-brand" href="#">
-                <img src="images/logo.svg" width="60" height="40" class="d-inline-block align-bottom">GRADO DE
-                ELECTRIFICACION DE SLA
-            </a>
-        </nav>
-        <br>
-        <!-- FORMULARIO PRNCIPAL -->
-        <form class="row g-2">
-            <h4 class="text-danger">Superficie Total m²</h4>
-            <!-- PRIMER FILA -->
-            <div class="col-6">
-                <label class="form-label"><b>* Ancho</b></label>
-                <input id="txtAn1" type="number" class="form-control text-center" onkeyup="Calcular()">
-            </div>
-            <div class="col-6">
-                <label class="form-label"><b>* Largo</b></label>
-                <input id="txtLa1" type="number" class="form-control text-center" onkeyup="Calcular()">
-            </div>
-            <div class="col-12">
-                <input id="inp1" type="number" class="form-control text-center" readonly="readonly">
-            </div>
-
-
-            <!-- SEGUNDA FILA -->
-            <h4 class="text-danger">Superficie Cubierta m²</h4>
-            <div class="col-6">
-                <label class="form-label"><b>* Ancho</b></label>
-                <input id="txtAn2" type="number" class="form-control text-center" onkeyup="Calcular()">
-            </div>
-            <div class="col-6">
-                <label class="form-label"><b>* Largo</b></label>
-                <input id="txtLa2" type="number" class="form-control text-center" onkeyup="Calcular()">
-            </div>
-            <div class="col-12">
-                <input id="inp2" type="number" class="form-control text-center" readonly="readonly">
-            </div>
-
-
-            <!-- TERCER FILA -->
-            <h4 class="text-danger">Superficie Semicubierta m²</h4>
-            <div class="col-6">
-                <label class="form-label"><b>* Ancho</b></label>
-                <input id="txtAn3" type="number" class="form-control text-center" onkeyup="Calcular()">
-            </div>
-            <div class="col-6">
-                <label class="form-label"><b>* Largo</b></label>
-                <input id="txtLa3" type="number" class="form-control text-center" onkeyup="Calcular()">
-            </div>
-            <div class="col-12">
-                <input id="inp3" type="number" class="form-control text-center" readonly="readonly">
-            </div>
-            <div class="col-6">
-                <label class="form-label"><b>* Sla </b></label>
-                <input id="inp4" type="number" class="form-control text-center" readonly="readonly">
-            </div>
-            <div class="col-6">
-                <label class="form-label"><b>* Grado de electrificacion</b> </label>
-                <input id="txtTipo" type="text" class="form-control text-center" readonly="readonly">
-            </div>
-
-            <!-- BOTONES INFORMACION -->
-            <button type="button" class="btn btn-danger mb-2  col-6" data-bs-toggle="modal"
-                data-bs-target="#exampleModal"><i class="fa fa-exclamation-circle"></i> Superficie</button>
-            <button type="button" class="btn btn-warning mb-2 col-6" data-bs-toggle="modal"
-                data-bs-target="#exampleModals"><i class="fa fa-exclamation-circle"></i> Conductores</button>
-            <button onclick="window.print()" type="button" class="btn btn-dark mt-2"><i class="fa fa-print"></i>
-                Imprimir/GuardarPDF</button>
-        </form>
-        <!-- MODAL ALERT INFORMACION UNO -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content text-center">
-                    <div class="modal-header bg bg-light">
-                        <h5 class="modal-title" id="exampleModalLabel">INFO SUPERFICIE</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="alert alert-success" role="alert">
-                            <h4 class="alert-heading">MINIMO</h4>
-                            <p>Superficie limite de aplicacion &lt; 60m² DPMS 3,7Kva </p>
-                        </div>
-                        <div class="alert alert-info" role="alert">
-                            <h4 class="alert-heading">MEDIO</h4>
-                            <p>Superficie limite de aplicacion &lt; 130m² DPMS 7,0Kva </p>
-                        </div>
-                        <div class="alert alert-warning" role="alert">
-                            <h4 class="alert-heading">ELEVADO</h4>
-                            <p>Superficie limite de aplicacion &lt; 200m² DPMS 11,0Kva </p>
-                        </div>
-                        <div class="alert alert-danger" role="alert">
-                            <h4 class="alert-heading">SUPERIOR</h4>
-                            <p>Superficie limite de aplicacion &gt; 200m² DPMS &gt; 11,0Kva </p>
+    <header class="container">
+        <div class="card mt-3">
+            <nav class="navbar container d-flex justify-content-center">
+                <a class="navbar-brand" href="#">
+                    <img src="images/logo.svg" width="80" height="60">
+                </a>
+            </nav>
+            <div class="card-body">
+                <div class="row mt-2">
+                    <!-- CARD TOTAL -->
+                    <div class="col-md-12 mb-3">
+                        <div class="card">
+                            <div class="card-header bg-dark">
+                                <h5 class=" card-text text-center text-light">SUPERFICIE TOTAL m²</h5>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <input id="txtAn1" type="number" class="form-control my-2 text-center"
+                                        placeholder="Ancho" onkeyup="Calcular()">
+                                    <input id="txtLa1" type="number" class="form-control text-center"
+                                        placeholder="Largo" onkeyup="Calcular()">
+                                </form>
+                            </div>
+                            <div class="card-footer">
+                                <input id="inp1" type="number" class="form-control text-center" readonly="readonly">
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- MODAL ALERT INFORMACION DOS -->
-        <div class="modal fade" id="exampleModals" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header bg bg-light">
-                        <h5 class="modal-title" id="exampleModalLabel">INFO CONDUCTORES</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <!-- CARD CUBIERTA -->
+                    <div class="col-md-12 mb-3">
+                        <div class="card">
+                            <div class="card-header bg-dark">
+                                <h5 class="card-text text-center text-light">SUPERFICIE CUBIERTA m²</h5>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <input id="txtAn2" type="number" class="form-control my-2 text-center"
+                                        placeholder="Ancho" onkeyup="Calcular()">
+                                    <input id="txtLa2" type="number" class="form-control text-center"
+                                        placeholder="Largo" onkeyup="Calcular()">
+                                </form>
+                            </div>
+                            <div class="card-footer">
+                                <input id="inp2" type="number" class="form-control text-center" readonly="readonly">
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <table class="table table-hover table-striped table-primary text-center">
-                            <thead>
-                                <tr>
-                                    <th>COBRE mm²</th>
-                                    <th>MONOFASICO</th>
-                                    <th>TRIFASICO</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1,5</td>
-                                    <td>15</td>
-                                    <td>14</td>
-                                </tr>
-                                <tr>
-                                    <td>2,5</td>
-                                    <td>21</td>
-                                    <td>18</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>28</td>
-                                    <td>25</td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>36</td>
-                                    <td>32</td>
-                                </tr>
-                                <tr>
-                                    <td>10</td>
-                                    <td>50</td>
-                                    <td>44</td>
-                                </tr>
-                                <tr>
-                                    <td>16</td>
-                                    <td>66</td>
-                                    <td>59</td>
-                                </tr>
 
-                            </tbody>
-                        </table>
+                    <!-- CARD SEMICUBIERTA -->
+                    <div class="col-md-12 mb-3">
+                        <div class="card">
+                            <div class="card-header bg-dark">
+                                <h5 class="card-text text-center text-light">SUPERFICIE SEMICUBIERTA m²</h5>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <input id="txtAn3" type="number" class="form-control my-2 text-center"
+                                        placeholder="Ancho" onkeyup="Calcular()">
+                                    <input id="txtLa3" type="number" class="form-control text-center"
+                                        placeholder="Largo" onkeyup="Calcular()">
+                                </form>
+                            </div>
+                            <div class="card-footer">
+                                <input id="inp3" type="number" class="form-control text-center" readonly="readonly">
+                            </div>
+                        </div>
+                    </div>
 
+                    <!-- CARD SLA -->
+                    <div class="col-md-6 mb-3">
+                        <div class="card">
+                            <div class="card-header bg-dark">
+                                <h5 class="card-text text-center text-light">SLA</h5>
+                            </div>
+                            <div class="card-footer">
+                                <input id="inp4" type="number" class="form-control text-center" readonly="readonly">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD GRADO -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header bg-dark">
+                                <h5 class="card-text text-center text-light">GRADO</h5>
+                            </div>
+                            <div class="card-footer">
+                                <input id="txtTipo" type="text" class="form-control text-center" readonly="readonly">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BOTON INFORMACION -->
+                    <div class="d-flex justify-content-end mt-2">
+                        <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i
+                                class="fa fa-exclamation-circle"></i> Info</button>
                     </div>
                 </div>
             </div>
         </div>
-
-        <br>
-        <br>
-        <!-- FOOTER COPYRIGHT -->
-        <footer class=" text-center bg bg-light text-dark">
-            <div class="text-center p-2 col-12">
+        <footer>
+            <div class="text-center text-dark p-3">
                 © 2021 Copyright:
-                <a class="text-success" href="#">JCdeveloper</a>
+                <a class="text-dark" href="https://juancalero.netlify.app/" target="_blank">JCdeveloper</a>
             </div>
         </footer>
-
+    </header>
+    <!-- INFORMACION -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel">INFORMACION</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading text-center">MINIMO</h4>
+                <p>Superficie limite de aplicacion &lt; 60m² DPMS 3,7Kva </p>
+            </div>
+            <div class="alert alert-info" role="alert">
+                <h4 class="alert-heading text-center">MEDIO</h4>
+                <p>Superficie limite de aplicacion &lt; 130m² DPMS 7,0Kva </p>
+            </div>
+            <div class="alert alert-warning" role="alert">
+                <h4 class="alert-heading text-center">ELEVADO</h4>
+                <p>Superficie limite de aplicacion &lt; 200m² DPMS 11,0Kva </p>
+            </div>
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading text-center">SUPERIOR</h4>
+                <p>Superficie limite de aplicacion &gt; 200m² DPMS &gt; 11,0Kva </p>
+            </div>
+        </div>
     </div>
+    </div>
+
     <script src="main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
-        integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
-        integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
         crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-
 </body>
 
 </html>
